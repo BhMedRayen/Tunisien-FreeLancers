@@ -35,6 +35,31 @@ class UserController extends Controller
     }
     public function addUser(Request $request)
     {
-        $user=new User();
+        // $user=new User();
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->password = $request->password;
+        // $user->save();
+        $user = User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password)
+        ]);
+        return response()->json(['new_user'=>$user],201);
+    }
+    public function updateUser(int $id,Request $request)
+
+    {
+        $user = User::find($id);
+        if($user==null)
+        {
+            return response()->json(['user'=>'User Not Found'],404);
+        }
+        $user->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password)
+        ]);
+        return response()->json(['update_user'=>'update success'],200);
     }
 }
