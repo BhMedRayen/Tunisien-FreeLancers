@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function getAllUsers()
     {
-        $users = User::all();
+        $users = User::where('name','like','b%')->get();
         return response()->json(['data'=>$users],200);
     }
     public function getUser(int $id)
