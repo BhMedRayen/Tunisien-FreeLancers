@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('user_name');
             $table->mail('e_mail');
             $table->string('password');
+            // $table->mail('e_mail');
+            // $table->string('password');
             $table->unsignedBigInteger('post_id');
             $table->timestamps();
             $table->foreign('post_id')->references('id')->on('posts');
