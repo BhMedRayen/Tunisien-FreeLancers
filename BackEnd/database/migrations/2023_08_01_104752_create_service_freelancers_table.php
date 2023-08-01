@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('service_freelancers', function (Blueprint $table) {
             $table->id();
             $table->string("Name_Service");
-            $table->int("YearsBusiness");
+            $table->integer("YearsBusiness");
             $table->string("TypeService");
-            $table->int("PrincesRange");
+            $table->integer("PrincesRange");
             $table->foreignId("user_id");
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
             $table->timestamps();
