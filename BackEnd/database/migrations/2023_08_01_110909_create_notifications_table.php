@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clients', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('user_name');
-            $table->mail('e_mail');
-            $table->string('password');
-            $table->unsignedBigInteger('post_id');
+            $table->foreignId("user_id");
+            $table->foreign("usre_id")->references("id")->on("users")->onDelete("cascade");
+            $table->string("message");
             $table->timestamps();
-            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
 
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('notifications');
     }
 };
