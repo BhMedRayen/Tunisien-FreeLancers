@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\VerifyEmail;
+use App\Models\ServiceFreelancer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
     public function Register(Request $request){
         if($request->hasFile("photo")){
             $file_name=time().'_'.$request->photo->getClientOriginalName();
-            $image=$request->file("photo")->storeAs("Users",$file_name,"public");
+            $image=$request->file("photo")->storeAs("image/Users",$file_name,"public");
             $image_path="/storage/".$image;
         }else{
             if($request->sex=="man"){
@@ -32,7 +35,24 @@ class AuthController extends Controller
             "cin"=>$request->cin,
             "num_tlf"=>$request->num_tlf
         ]);
-        
+       
+        if(!$request->ClientChoice){
+            $servicesData = json_decode($request->Services, true);
+            if(isset($servicesData) && is_array($servicesData) && count($servicesData)>0){
+                for($i=0;$i<count($servicesData);$i++){
+                    $service=new ServiceFreelancer();
+                    $service->Name_Service=$servicesData[$i]["nameservice"];
+                    $service->YearsBusiness=$servicesData[$i]["YearsBusiness"];
+                    $service->TypeService=$servicesData[$i]["TypeService"];
+                    $service->PrincesRange=$servicesData[$i]["PrinceRange"];
+                    $service->user_id=$user->id;
+                    $service->save();
+                }
+            }
+        }
+
+        Mail::to($request->email)->send(new VerifyEmail($user));
+
         return response()->json(["data"=>"User Created"],201);
     }
 }
