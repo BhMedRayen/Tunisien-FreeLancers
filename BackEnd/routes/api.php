@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,9 @@ Route::get('/user/{id}',[UserController::class,'getUser']);
 Route::delete('/user_delete/{id}',[UserController::class,'deleteUser']);
 Route::post('/user_insert',[UserController::class,'addUser']);
 Route::put('/user_update/{id}',[UserController::class,'updateUser']);
+});
+
+
+Route::group(["prefix"=>"/auth"],function(){
+    Route::post("/register",[AuthController::class,'Register']);
 });
