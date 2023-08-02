@@ -23,8 +23,8 @@ return new class extends Migration
             $table->enum("sex",['man','woman']);
             $table->string("cin");
             $table->string("num_tlf");
-            $table->string("password_Token");
-            $table->timestamp("Password_send_at");
+            $table->string("password_Token")->nullable();
+            $table->timestamp("Password_send_at")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
