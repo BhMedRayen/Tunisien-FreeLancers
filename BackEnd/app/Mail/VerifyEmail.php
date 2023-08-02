@@ -16,16 +16,17 @@ class VerifyEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $user;
+    public function __construct($user)
     {
-        //
+        $this->user=$user;
     }
 
 
     public function build()
     {
-       /* return $this->subject('Link Verify Mail')
-                     ->markdown('EmailVerification');*/
+        return $this->subject('Link Verify Mail')
+                     ->markdown('verifieemail');
     }
 
     /**
