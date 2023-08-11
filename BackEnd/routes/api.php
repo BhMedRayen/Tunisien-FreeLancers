@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\EmailController;
+use App\Http\Controllers\auth\ForgotPassword;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -36,4 +37,7 @@ Route::group(["prefix"=>"/auth"],function(){
     Route::post("/login",[LoginController::class,'Login']);
     Route::post("/verify/{email}",[EmailController::class,"VerifyEmail"]);
     Route::post("/RenvoyerEmail/{email}",[EmailController::class,"RenvoyerEmail"]);
+    Route::post("/forgotPasswordToken/{email}",[ForgotPassword::class,"forgotPasswordToken"]);
+    Route::post("/VerifyToken",[ForgotPassword::class,"VerifyToken"]);
+    Route::post("/ChangerPassword",[ForgotPassword::class,"ChangerPassword"]);
 });
