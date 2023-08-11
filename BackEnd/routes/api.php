@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\EmailController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -33,4 +34,5 @@ Route::put('/user_update/{id}',[UserController::class,'updateUser']);
 Route::group(["prefix"=>"/auth"],function(){
     Route::post("/register",[AuthController::class,'Register']);
     Route::post("/login",[LoginController::class,'Login']);
+    Route::post("/verify/{email}",[EmailController::class,"VerifyEmail"]);
 });
