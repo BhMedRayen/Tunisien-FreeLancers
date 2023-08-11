@@ -35,4 +35,5 @@ Route::group(["prefix"=>"/auth"],function(){
     Route::post("/register",[AuthController::class,'Register']);
     Route::post("/login",[LoginController::class,'Login']);
     Route::post("/verify/{email}",[EmailController::class,"VerifyEmail"]);
+    Route::post("/RenvoyerEmail/{email}",[EmailController::class,"RenvoyerEmail"]);
 });
