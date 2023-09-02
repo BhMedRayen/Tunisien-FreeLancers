@@ -30,25 +30,26 @@ class AuthController extends Controller
             "email"=>$request->email,
             "password"=>bcrypt($request->password),
             "Photo"=>$image_path,
-            "IsClient"=>$request->ClientChoice==true ? true :false,
+            "IsClient"=>$request->ClientChoice=="Client" ? true :false,
             "sex"=>$request->sex,
             "cin"=>$request->cin,
             "num_tlf"=>$request->num_tlf
         ]);
        
-        if(!$request->ClientChoice){
+        if($request->ClientChoice!="Client"){
             $servicesData = json_decode($request->Services, true);
             if(isset($servicesData) && is_array($servicesData) && count($servicesData)>0){
                 for($i=0;$i<count($servicesData);$i++){
-                    $service=new ServiceFreelancer();
-                    $service->Name_Service=$servicesData[$i]["nameservice"];
-                    $service->YearsBusiness=$servicesData[$i]["YearsBusiness"];
-                    $service->TypeService=$servicesData[$i]["TypeService"];
-                    $service->PrincesRange=$servicesData[$i]["PrinceRange"];
+                    $service=new ServiceFreelancer();                
+                    $service->Name_Service=$servicesData[$i]["Name"];
+                    $service->YearsBusiness=$servicesData[$i]["Years"];
+                    $service->TypeService=$servicesData[$i]["Type"];
+                    $service->PrincesRange=$servicesData[$i]["price"];
                     $service->user_id=$user->id;
                     $service->save();
                 }
             }
+         
         }
 
         Mail::to($request->email)->send(new VerifyEmail($user));
