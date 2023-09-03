@@ -7,26 +7,20 @@
                                 <v-toolbar-title >Content de te revoir</v-toolbar-title>
                              </v-toolbar>
                              <v-card-text>
-                             <form >
-                             
-                            
-
+                             <form @submit.prevent="login()">                        
                                     <v-text-field
-                                  
-                                    
                                       name="email"
                                       label="Email"
-                                   
+                                    v-model="email"
                                       type="text"
                                       placeholder="Enter Email"
                                     ></v-text-field>
                                     <v-text-field
                                       :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                                    
                                       name="password"
                                       label="Mot de passe"
                                       :type="show ? 'text' : 'password'"
-                                     
+                                      v-model="password"
                                       @click:append="show = !show"
                                       placeholder="password"
                                    ></v-text-field>
@@ -37,39 +31,82 @@
                                           Vous êtes nouveau ici ?<router-link to="signup" class="text-decoration-none  mx-2">  <span>S'incrire</span></router-link>
                                         </div>
                                         <div class="text-center mt-3">
-                                          <router-link to="forgot_password" class="text-decoration-none  mx-2">Mot de passe oublié ?</router-link>
+                                          <router-link to="ForgotPassword" class="text-decoration-none  mx-2">Mot de passe oublié ?</router-link>
                                         </div>
                                     </div>
                               </form>
-                           
                              </v-card-text>
                           </v-card>
                        </v-flex>
                     </v-layout>
-                 
+                    <v-snackbar
+      v-model="snackbar"
+    >
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="pink"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
                  </v-container>
+    
 </template>
 
 <script>
+import { AuthStore } from "@/store";
 import serviceauth from "../../Services/auth.js";
 export default{
+  setup(){
+    const store=AuthStore();
+    return {store}
+  },
     created(){
-        if(this.$route.query.email!='undefined'){
+        if((this.$route.query.email)?.length>5){
              this.verifyEmail();
+        }
+
+        if((this.$route.query.content)?.length>2){
+          this.snackbar=true;
+          this.text=this.$route.query.content;
         }
     },
     data(){
         return{
-            show:false
+            show:false,
+            email:"",
+            password:"",
+            load:false,
+            text:"",
+            snackbar:false
             
         }
     },
     methods:{
         verifyEmail(){
-            console.log("test")
-            serviceauth.verify(this.$route.query.email).then((res)=>{
-
+              serviceauth.verify(this.$route.query.email).then((res)=>{
             })
+        },
+        login(){
+          this.load=true;
+          serviceauth.Login(this.email,this.password).then((res)=>{
+           if(this.store.IsClient){
+              console.log("clinet");
+            }else{
+              console.log("freelancer");
+            }
+            this.load=false;
+          }).catch((error)=>{
+            this.load=false;
+            this.text=error.response.data.data;
+            this.snackbar=true;
+          })
         }
     }
 }
