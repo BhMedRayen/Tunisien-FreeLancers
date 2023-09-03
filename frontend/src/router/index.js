@@ -3,6 +3,9 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import singup from "../views/Auth/SignUpView.vue"
 import login from "../views/Auth/LoginView.vue"
+import ForgotPassword from "../views/Auth/ForgotPasswordView.vue"
+import VerifyToken from "../views/Auth/VerifyTokenView.vue"
+import chnagerPass from "../views/Auth/ChangerPasswordView.vue"
 Vue.use(VueRouter)
 
 const routes = [
@@ -10,6 +13,21 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/VerifyToken',
+    name: 'VerifyToken',
+    component: VerifyToken
+  },
+  {
+    path: '/chnagerPass',
+    name: 'chnagerPass',
+    component: chnagerPass
+  },
+  {
+    path: '/ForgotPassword',
+    name: 'ForgotPassword',
+    component: ForgotPassword
   },
   
   {

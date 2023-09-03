@@ -28,13 +28,13 @@ class ForgotPassword extends Controller
     public function VerifyToken(Request $request){
         $user=User::where("email",$request->email)->where("password_Token",$request->token)->first();
         if($user){
-            $tokenCreationTime = $user->Password_send_at; 
+            /*$tokenCreationTime = $user->Password_send_at; 
             $expirationTime = Carbon::parse($tokenCreationTime)->addHour();
             if($expirationTime > now()){
                 return response()->json(["data"=>"Token Expired"],404);
-            }else{
+            }else{*/
                 return response()->json(["data"=>"Email And Token Correct"],200);
-            }
+            //}
         }else{
             return response()->json(["data"=>"Email Or Token not found"],404);
         }

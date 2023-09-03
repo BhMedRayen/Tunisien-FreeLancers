@@ -1,6 +1,6 @@
 import "@/plugins/axios";
 import Axios from "axios";
-
+import { AuthStore } from "@/store";
 export default{
 
     
@@ -25,5 +25,27 @@ export default{
     },
     verify(email){
         return Axios.post("auth/verify/"+email);
+    },
+    async Login(email,password){
+        const store=AuthStore();
+        const res =await Axios.post("auth/login",{email,password});
+        if(res.status==200){
+            const dataInfo=res.data.data;
+            store.login(dataInfo.token,dataInfo.user,dataInfo.Role=="Client" ? true :false);
+        }else{
+            store.LogOut();
+        }
+     
+    },
+    forgetpassword(email)
+    {
+        return Axios.post('auth/forgotPasswordToken/'+email);
+    },
+    VerifyToken(data){
+        return Axios.post("auth/VerifyToken",data);
+    },
+    changerPassword(data){
+        return Axios.post("auth/ChangerPassword",data);
     }
+
 }
