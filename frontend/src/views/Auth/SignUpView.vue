@@ -1,6 +1,5 @@
 <template>
-    <div> 
-        
+    <div>     
         <v-container fluid fill-height>
                 <v-layout class="mt-5 py-5" align-center justify-center>
                    <v-flex  sm8 md4>
@@ -14,29 +13,24 @@
                          </v-toolbar>
                          <v-card-text>
                          <form @submit.prevent="Register()"  enctype="multipart/form-data">
-
                               <div class="row">
                                  <div class="col-md-6">
                                   <v-text-field
                                   name="Name"
                                   label="Nom"
-                                  v-model="nom"
-                               
+                                  v-model="nom"        
                                   type="text"
                                   placeholder="Tapez Nom"
-                                ></v-text-field>
-                             
+                                ></v-text-field>    
                                  </div>
                                  <div class="col-md-6">
                                   <v-text-field
                                   name="LastName"
                                     v-model="prenom"
-                                  label="Prenom"
-                                
+                                  label="Prenom"       
                                   type="text"
                                   placeholder="Tapez Prenom"
                                 ></v-text-field>
-
                                  </div>
                               </div>
                               <div class="row">
@@ -45,11 +39,9 @@
                                     v-model="email"
                                  name="Email"
                                  label="Email"
-                                 type="text"
-                                
+                                 type="text"                            
                                  placeholder="Entrer Email"
-                               ></v-text-field>
-                             
+                               ></v-text-field>                       
                                 </div>
                              </div>
                              <v-radio-group v-model="sex">
@@ -64,16 +56,13 @@
     </v-radio-group>
                              <div class="row">
                               <div class="col-md-12">
-                                <v-text-field
-                                
+                                <v-text-field                    
                                   name="password"
                                 v-model="password"
                                   :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                                   :type="show ? 'text' : 'password'"
-                                  @click:append="show = !show"
-                             
-                                  label="Mot de passe"
-                                
+                                  @click:append="show = !show"              
+                                  label="Mot de passe"               
                                   placeholder="Mot de passe"
                                ></v-text-field>
                               </div>
@@ -85,8 +74,7 @@
                                    type="file" ref="photo"
                                    @change="uploadFile"
                               >   
-                            </div>
-                           
+                            </div>       
                             <div class="col-md-12">
                              <v-text-field
                              name="N° Phone"
