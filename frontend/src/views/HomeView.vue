@@ -1,7 +1,4 @@
 <template>
-  
-   
- 
   <div>
     <navbarComp></navbarComp>
       <v-container  class=" fluid mt-5 py-5 sec1">
