@@ -35,6 +35,13 @@ export const AuthStore = defineStore('auth', () => {
     localStorage.removeItem("IsClient");
   }
 
+  function SetUser(u){
+    User.value=null;
+    localStorage.removeItem('user');
+    User.value=u;
+    localStorage.setItem('user',JSON.stringify(u));
+}
+
   return{
     token,
   User,
@@ -45,6 +52,7 @@ getUser,
 getIsAuth,
 getIsClient,
 login,
-LogOut
+LogOut,
+SetUser
   }
 })
