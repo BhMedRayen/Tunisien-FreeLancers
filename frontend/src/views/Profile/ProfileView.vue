@@ -1,15 +1,15 @@
 <template>
-    <div>
-            {{user}}
-    </div>
+   <NavbarComponent></NavbarComponent>
 </template>
 
 <script>
+
 import {AuthStore} from "../../store/index"
+import NavbarComponent from "../../components/Profile/NavbarComponent"
 export default{
 
     mounted(){
-        this.User=this.setup.getUser();
+        this.User=this.setup.getUser;
     },
 
     setup(){
@@ -20,6 +20,9 @@ export default{
         return{
             User:[]
         }
+    },
+    components:{
+        NavbarComponent
     }
 }
 
