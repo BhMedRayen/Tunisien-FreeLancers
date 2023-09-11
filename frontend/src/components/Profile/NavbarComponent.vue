@@ -6,7 +6,7 @@
       dark
     >
 
-      <v-toolbar-title>
+      <v-toolbar-title @click="ChangeSettiing()">
         Tunisienn Freelancers
       </v-toolbar-title>
 
@@ -16,6 +16,7 @@
           cols="12"
           sm="6"
           md="3"
+          
         >
           <v-text-field
           class="pt-2"
@@ -50,13 +51,13 @@
         </v-list>
       </v-menu>
 
-    <v-menu
+    <v-menu class="mx-4"
       :rounded="rounded"
-      offset-y
+       offset-y
       :nudge-width="100"
     >
       <template v-slot:activator="{ attrs, on }">
-        <v-list-item-avatar    v-bind="attrs"
+        <v-list-item-avatar  v-bind="attrs"
           v-on="on">
                <v-avatar size="43px">
                       <v-img  :src="'http://localhost:8000'+User['Photo']"></v-img>
@@ -66,7 +67,7 @@
       </template>
 
       <v-list>
-        <v-list-item
+        <v-list-item @click="logout()"
         >
         
             <v-list-item-content>
@@ -80,10 +81,10 @@
             </v-list-item-action>
         
         </v-list-item>
-        <v-list-item
+        <v-list-item @click="ChangeSettiing()"
         >
         
-            <v-list-item-content>
+            <v-list-item-content >
               <v-list-item-title>Settings</v-list-item-title>
             </v-list-item-content>
             <v-list-item-action>
@@ -106,12 +107,12 @@ import {AuthStore} from "../../store/index"
 export default{
 
     mounted(){
-        this.User=this.setup.getUser;
+        this.User=this.store.getUser;
     },
 
     setup(){
-        const setup=AuthStore();
-        return{setup}
+        const store=AuthStore();
+        return{store}
     },  
     data(){
         return{
@@ -123,6 +124,10 @@ export default{
         }
     },
     methods:{
+      logout(){
+        this.store.LogOut();
+        this.$router.push({name:'login'});
+      },
       ChangerRoleSelected(val){
         this.roleSlelected=val;
       },
@@ -130,6 +135,9 @@ export default{
         if(this.roleSlelected==""){
           this.errorSearch="Chose Role";
         }
+      },
+      ChangeSettiing(){
+          this.$emit('ChangeSettiing');
       }
     }
 }
