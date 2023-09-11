@@ -6,6 +6,7 @@ import login from "../views/Auth/LoginView.vue"
 import ForgotPassword from "../views/Auth/ForgotPasswordView.vue"
 import VerifyToken from "../views/Auth/VerifyTokenView.vue"
 import chnagerPass from "../views/Auth/ChangerPasswordView.vue"
+import profile from "../views/Profile/ProfileView.vue"
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,6 +14,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: profile
   },
   {
     path: '/VerifyToken',

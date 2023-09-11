@@ -96,11 +96,12 @@ export default{
         login(){
           this.load=true;
           serviceauth.Login(this.email,this.password).then((res)=>{
-           if(this.store.IsClient){
-              console.log("clinet");
-            }else{
-              console.log("freelancer");
-            }
+             this.$router.push({name:"profile"});
+          //  if(this.store.IsClient){
+          //     console.log("clinet");
+          //   }else{
+          //     console.log("freelancer");
+          //   }
             this.load=false;
           }).catch((error)=>{
             this.load=false;
