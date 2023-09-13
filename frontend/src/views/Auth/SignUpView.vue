@@ -47,11 +47,11 @@
                              <v-radio-group v-model="sex">
       <v-radio
         label="Homme"
-        value="Man"
+        value="man"
       ></v-radio>
       <v-radio
         label="Femme"
-        value="Woman"
+        value="woman"
       ></v-radio>
     </v-radio-group>
                              <div class="row">
