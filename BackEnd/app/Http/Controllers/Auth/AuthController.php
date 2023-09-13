@@ -17,6 +17,7 @@ class AuthController extends Controller
             $image=$request->file("photo")->storeAs("image/Users",$file_name,"public");
             $image_path="/storage/".$image;
         }else{
+            // return response()->json(["data"=>$request->sex],201);
             if($request->sex=="man"){
                 $image_path="/storage/image/ParDefaut/homme.png";
             }else{
