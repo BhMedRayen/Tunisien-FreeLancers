@@ -14,7 +14,7 @@
                           <p class="p1">{{ p1 }}</p>
                       </v-flex>
                       <v-flex xl6 lg6 md6 sm12 xs12 data-aos="fade-left">
-                          <!-- <img id="im1" src="../../../public/images/person-studying.png" width="500px"> -->
+                        <img id="im2" src="../assets/logo/img1.jpg" width="500px" class="px-5">
                       </v-flex>
                   </v-layout>
               </v-container>
@@ -29,11 +29,10 @@
                   <v-container class="py-4">
                       <v-layout flex wrap class="py-4" >
                           <v-flex xl6 lg6 md6 sm12 xs12 data-aos="fade-right">
-                              <img id="im2" src="../assets/logo/img1.jpg" width="500px" class="px-5">
+                            <img id="im2" src="../assets/pexels-lisa-fotios-16129728.jpg" width="500px" class="px-5">
                           </v-flex>
                           <v-flex xl6 lg6 md6 sm12 xs12 data-aos="fade-left">
-                              <p class="p1">{{ p4 }}</p>
-                              <p class="p2 hidden-sm-and-down">{{ p3 }}</p>
+                              <p class="p1">{{ p2}}</p>
                           </v-flex>
                           
                       </v-layout>
@@ -47,7 +46,7 @@
 
       <!-- ------------------section 3 ------------------------------------>
       <div class="subject">
-          <h3 class="">OUR POPULAR SUBJECTS</h3>
+          <h3 class="">OUR SERVICES</h3>
       </div>
       
       <div class="sec3">
@@ -58,7 +57,7 @@
                       <v-flex xl3 lg3 md6 sm6 xs12 v-for="card in cards" :key="card.title" class="px-5 py-5" data-aos="fade-down">
                           <div class="card">
                               <v-avatar size="100">
-                                  <v-img :src="card.image" class="pa-5"></v-img>
+                                 <v-icon color="black" size="40">mdi-{{ card.icon }}</v-icon>
                               </v-avatar>
                               <h2 class="align-center" id="h2">{{ card.title }}</h2>
                               <p id="p" class="">{{ card.p }}</p>
@@ -74,26 +73,56 @@
 
       <!-- ------------------ equipe ------------------------------------>
       <div class="subject">
-          <h3 class="">OUR BEAUTIFUL TEAM</h3>
+          <h3 class="">Owner</h3>
       </div>
-      <div class="equipe">
+      <div class="equipe ">
           <v-container fluid>
               <div class="card2 pa-4 text-center rounded-0">
-                  <v-layout flex wrap class="mt-5 py-5">
-                              <v-flex xl3 lg3 md6 sm6 xs12 class="mt-5 py-5 px-5" v-for="equipe in equipes" :key="equipe.name" data-aos="fade-down">
-                                  <div class="card-body">
-                                      <div class="img">
-                                          <v-img :src="equipe.image" width="600px" height="400px"></v-img>
-                                      </div>   
-                                      <p class="py-5 m-5">{{equipe.name}}</p>
-                                  </div>
-                              </v-flex>
-                         
-                  </v-layout>
+                <v-card
+    class="mx-auto"
+    max-width="344"
+  >
+    <v-img
+      src="../assets/rayen (2).jpg"
+      height="200px"
+    ></v-img>
+
+    <v-card-title>
+     Rayen Ben Hassine
+    </v-card-title>
+
+    <v-card-subtitle>
+       DSI32 Iset Bizerte
+    </v-card-subtitle>
+
+    <v-card-actions class="text-center mx-5">
+      <div class="row mx-5">
+         <div class="col-lg-3">
+            <v-icon>mdi-facebook</v-icon>
+         </div>
+         <div class="col-lg-3">
+            <v-icon>mdi-twitter</v-icon>
+         </div>
+         <div class="col-lg-3">
+            <v-icon>mdi-instagram</v-icon>
+         </div>
+         <div class="col-lg-2">
+            <v-icon>mdi-github</v-icon>
+         </div>
+      </div>  
+      <v-spacer></v-spacer>
+
+    </v-card-actions>
+
+    
+  </v-card>
               </div>
           </v-container>
       </div>
-      
+      <div style="bottom: 0;background-color: #000;color: white;text-align: center;">
+          CopyRight 2022-2023
+      </div>
+
       <!-- ------------------ /equipe ------------------------------------>
   </div>
   
@@ -109,11 +138,12 @@ export default {
   },
   data: () => ({
       p1:'A specialized website tailored for Tunisian freelancers addresses a unique market need, connecting Tunisia growing pool of skilled professionals with clients worldwide. It offers a platform where freelancers can effectively display their talents, covering various fields like web development, graphic design, and content writing. This localized approach allows clients to access specialized skills with cultural insights and language proficiency.',
+      p2:'The website empowers freelancers with tools to create comprehensive profiles, showcase portfolios, and promote their services, facilitating secure payment processing and seamless communication with clients. Additionally, it may provide valuable resources such as job listings, tutorials, and a supportive community.In essence, this dedicated platform benefits both local talent and global businesses by enhancing access to Tunisian freelancers expertise, thereby fostering economic growth and collaboration within Tunisias freelance community.',
       cards:[
-          {title:'Document',p:'A document official is an official document that has been created, issued, or certified by the university.',image:require('../assets/logo.png')},
-          {title:'Forum',p:'A forum is an online discussion  where users can engage in conversations, share ideas and opinions, and ask and answer questions on various topics.',image:require('../assets/logo.png')},
-          {title:'Club',p:'A Club is an organization that connects graduates of a particular university or college, provides them with opportunities for networking and socializing.',image:require('../assets/logo.png')},
-          {title:'Help',p:'The help desk typically offers a single point of contact for users to seek assistance from trained technicians who can diagnose and troubleshoot issues and provide solutions.',image:require('../assets/logo.png')},
+          {title:'POST',p:'  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maxime!',icon:"post"},
+          {title:'COMMENT',p:'  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maxime!',icon:"comment"},
+          {title:'NOTIFICATION',p:'  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maxime!',icon:"bell-badge"},
+          {title:'EDIT PROFIL',p:'  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maxime!.',icon:"human-edit"},
           
       ],
 
@@ -129,7 +159,8 @@ export default {
 <style scoped>
 .p1{
   font-family: Verdana, Geneva, sans-serif;
-font-size: 18px;
+font-size: 25px;
+line-height: 40px;
 color: #000000;
 font-weight: 400;
 text-decoration: none solid rgb(68, 68, 68);
@@ -148,8 +179,12 @@ font-variant: small-caps;
   font-variant: small-caps;
 }
 
+.title{
+  margin-bottom: 25px;;
+}
 .title-word {
 animation: color-animation 4s linear infinite;
+font-size: 32px;
 }
 
 .title-word-1 {
@@ -184,7 +219,7 @@ animation: color-animation 4s linear infinite;
 }
 
 .line1{
-  background-color: #525fe1;
+  background-color: #E84C03;
   height: 40px;
   clip-path: polygon(0 41%, 98% 69%, 100% 75%, 0 71%);
   width: 100%;
@@ -226,10 +261,10 @@ animation: color-animation 4s linear infinite;
   margin-bottom: 100px;
 }
 .card{
-  border:2px solid#1976D2;
+  border:2px solid#E84C03;
   padding: 20px;
   height: 45vh;
-  background-color: #81D4FA;
+  background-color: white;
   color: #444;
   display:flex;
   flex-direction: column;
@@ -237,7 +272,7 @@ animation: color-animation 4s linear infinite;
 }
 
 .card:hover{
-  background-color: #1976D2;
+  background-color: #E84C03;
   color: white;
   
 }
@@ -249,7 +284,7 @@ animation: color-animation 4s linear infinite;
 }
 .subject>h3{
   font-family: 'DM Sans', sans-serif;
-  color: #1976D2;
+  color: #E84C03;
   font-size: 30px;
   display: inline-block;
 }
