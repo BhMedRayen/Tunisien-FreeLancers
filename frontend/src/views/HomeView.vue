@@ -8,12 +8,10 @@
                   <v-layout flex wrap class="py-4" >
                       <v-flex xl6 lg6 md6 sm12 xs12 data-aos="fade-right">
                           <div class="title">
-                              <span class="title-word title-word-1">My</span>
-                              <span class="title-word title-word-2">Edu</span>
-                              <span class="title-word title-word-3">Connect</span>
+                              <span class="title-word title-word-1">Tunisien</span>
+                              <span class="title-word title-word-2">Freelancer</span>
                           </div>
                           <p class="p1">{{ p1 }}</p>
-                          <p class="p2 hidden-sm-and-down">{{ p2 }}</p>
                       </v-flex>
                       <v-flex xl6 lg6 md6 sm12 xs12 data-aos="fade-left">
                           <!-- <img id="im1" src="../../../public/images/person-studying.png" width="500px"> -->
@@ -31,7 +29,7 @@
                   <v-container class="py-4">
                       <v-layout flex wrap class="py-4" >
                           <v-flex xl6 lg6 md6 sm12 xs12 data-aos="fade-right">
-                              <!--<img id="im2" src="../../../public/images/person-managing-it-settings.png" width="500px" class="px-5">-->
+                              <img id="im2" src="../assets/logo/img1.jpg" width="500px" class="px-5">
                           </v-flex>
                           <v-flex xl6 lg6 md6 sm12 xs12 data-aos="fade-left">
                               <p class="p1">{{ p4 }}</p>
@@ -110,10 +108,7 @@ export default {
   created(){
   },
   data: () => ({
-      p1:' is a website that caters specifically to college students .',
-      p2:'Myeduconnect is an innovative education website that offers a range of features to support students in their academic journey. One of the main benefits of this platform is its provision of professional documents, such as academic articles, research papers, and study guides, which can be accessed by students to enhance their learning experience. Additionally, Myeduconnect provides a forum for students to engage in discussions, share ideas, and collaborate with peers on academic topics. Moreover, the website has numerous clubs that cater to diverse interests, enabling students to explore their passions beyond the classroom. ',
-      p3:'Online education has revolutionized the way we learn by providing students with the flexibility and convenience to access educational materials remotely. This mode of learning offers a wide range of programs and courses to choose from, allowing students to tailor their education to fit their needs and interests. Online education is particularly beneficial for those who have other commitments such as work or family obligations, as it allows them to learn on their own schedule. While it does present some challenges, such as a lack of face-to-face interaction, advances in technology are addressing these issues. Overall, online education has become a popular and effective means of learning in today s digital age.',
-      p4:'Online Education',  
+      p1:'A specialized website tailored for Tunisian freelancers addresses a unique market need, connecting Tunisia growing pool of skilled professionals with clients worldwide. It offers a platform where freelancers can effectively display their talents, covering various fields like web development, graphic design, and content writing. This localized approach allows clients to access specialized skills with cultural insights and language proficiency.',
       cards:[
           {title:'Document',p:'A document official is an official document that has been created, issued, or certified by the university.',image:require('../assets/logo.png')},
           {title:'Forum',p:'A forum is an online discussion  where users can engage in conversations, share ideas and opinions, and ask and answer questions on various topics.',image:require('../assets/logo.png')},
@@ -134,7 +129,7 @@ export default {
 <style scoped>
 .p1{
   font-family: Verdana, Geneva, sans-serif;
-font-size: 30px;
+font-size: 18px;
 color: #000000;
 font-weight: 400;
 text-decoration: none solid rgb(68, 68, 68);
