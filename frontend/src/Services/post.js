@@ -13,6 +13,15 @@ export default{
     },
     updatepost(info){
         return Axios.put("post/updatepost",info);
+    },
+    getPostsUser(id){
+        return Axios.get("post/getPostsUser/"+id);
+    },
+    getComments(id){
+        return Axios.get("post/getComments/"+id);
+    },
+    ajouterComment(info){
+        return Axios.post("post/ajouterComment",info);
     }
 }
      
