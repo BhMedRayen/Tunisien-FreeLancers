@@ -1,5 +1,7 @@
 <template>
-         <v-container fluid fill-height>
+         <div>
+                <navbar class="mb-5"></navbar>
+                  <v-container fluid fill-height style="margin-top:7%;" data-aos="fade-left">
                     <v-layout align-center justify-center>
                        <v-flex xs12 sm8 md4>
                           <v-card class="elevation-12">
@@ -26,7 +28,7 @@
                                    ></v-text-field>
                                     <div class="mt-3 text-center">
                                         <v-btn type="submit" class="mt-4 mx-2" style="color:#fff !important" color="#E84C03" value="log in" :loading="load">Connexion</v-btn>
-                                        <v-btn type="button" class="mt-4 " color="gray" value="log in">Fermer</v-btn>
+                                        <router-link to="/" class="text-decoration-none  mx-2"> <v-btn type="button" class="mt-4 " color="gray" value="close">Fermer</v-btn></router-link>
                                         <div class="text-center mt-3">
                                           Vous êtes nouveau ici ?<router-link to="signup" class="text-decoration-none  mx-2">  <span>S'incrire</span></router-link>
                                         </div>
@@ -39,6 +41,7 @@
                           </v-card>
                        </v-flex>
                     </v-layout>
+                  </v-container>
                     <v-snackbar
       v-model="snackbar"
     >
@@ -55,13 +58,14 @@
         </v-btn>
       </template>
     </v-snackbar>
-                 </v-container>
+  </div>
     
 </template>
 
 <script>
 import { AuthStore } from "@/store";
 import serviceauth from "../../Services/auth.js";
+import navbar from "@/components/Home/navbar.vue";
 export default{
   setup(){
     const store=AuthStore();
@@ -97,18 +101,16 @@ export default{
           this.load=true;
           serviceauth.Login(this.email,this.password).then((res)=>{
              this.$router.push({name:"profile"});
-          //  if(this.store.IsClient){
-          //     console.log("clinet");
-          //   }else{
-          //     console.log("freelancer");
-          //   }
             this.load=false;
           }).catch((error)=>{
             this.load=false;
-            this.text=error.response.data.data;
+            this.text=error.response.data.message;
             this.snackbar=true;
           })
         }
+    },
+    components:{
+      navbar
     }
 }
 </script>

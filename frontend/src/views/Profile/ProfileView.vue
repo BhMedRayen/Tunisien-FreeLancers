@@ -1,7 +1,7 @@
 <template>
             <div>
-                <NavbarComponent @ChangeSettiing="ChangeSettiing"></NavbarComponent>
-                <div v-if="!setting" >
+                <NavbarComponent @ChangeSettiing="ChangeSettiing" @editPageAccueil="editPageAccueil"></NavbarComponent>
+                <div v-if="!setting && !showAccueil" >
                 <div class="mt-5 py-5 container">
                     <v-card
                     max-width="100%"
@@ -32,6 +32,7 @@
         outlined
         rounded
         text
+        @click="ChangeSettiing()"
         color="#E84C03"
       >
         Edit Profile
@@ -64,8 +65,10 @@
     >
 
       <v-card>
-        <v-card-title class="text-h5 grey lighten-2">
-          Add Post
+        <v-card-title class="text-h5 grey lighten-2 ">
+          
+            Add Post
+        
         </v-card-title>
 
         <v-card-text>
@@ -142,11 +145,14 @@
       </v-card>
     </v-dialog>
                             <v-card elevation="5">
-                                     <div class="text-center">
-                                            <v-btn color="primary" @click="dialog=true">Add Post</v-btn>
+                                     <div class="">
+                                            <v-btn class="m-2" color="primary" @click="dialog=true">Add Post</v-btn>
                                     </div>
-                                <div style="height: 300px; overflow-y: scroll;">
-                                 
+                                    <div v-if="posts==''" style="padding: 100px;">
+                                        <h2 class="text-center " >No Posts</h2>
+                                    </div>
+                                <div v-else style="height: 300px; overflow-y: scroll;">
+
                                             <v-card v-for="item in posts"
     class="mx-auto mb-2 mt-2"
     max-width="344"
@@ -171,24 +177,23 @@
 
     <v-card-actions>
       <v-btn
-        outlined
         rounded
-        text
+        color="primary"
       >
         Comments
       </v-btn>
       <v-btn
-        outlined
+      style="color:white"
         rounded
-        text
+        color="red"
          @click="deletepost(item.id)"
       >
         Delete
       </v-btn>
        <v-btn
-        outlined
+       style="color:white"
         rounded
-        text
+        color="yellow"
         @click="showDilaog(item.id,item.description)"
       >
         Update
@@ -202,8 +207,11 @@
                       </div>
                 </div>
             </div>  
-               <div v-else>
-                <SettingComp></SettingComp>
+               <div v-else-if="setting && !showAccueil">
+                  <SettingComp></SettingComp>
+               </div>
+               <div v-else-if="!setting && showAccueil">
+                  <Accuei></Accuei>
                </div>
               
             </div>
@@ -214,11 +222,12 @@ import postService from "../../Services/post.js"
 import SettingComp from "../../components/Profile/Settings"
 import {AuthStore} from "../../store/index"
 import NavbarComponent from "../../components/Profile/NavbarComponent"
+import Accuei from "../../views/Profile/AccueilView.vue"
 export default{
 
     created(){
         this.User=this.setup.getUser;
-        this.fetchData();
+        this.fetchData(this.User['id']);
     },
 
     setup(){
@@ -234,12 +243,18 @@ export default{
             updateDescription:"",
             dialogUpdate:false,
             posts:[],
-            idSelected:""
+            idSelected:"",
+            showAccueil:true
         }
     },
     methods:{
+      editPageAccueil(val){
+        this.showAccueil=val;
+        this.setting=false;
+      },
         ChangeSettiing(){
            this.setting=!this.setting;
+           this.showAccueil=false;
         },
         addPOSt(){
             if(this.Description==""){
@@ -252,6 +267,7 @@ export default{
                 console.log(res.data);
                 this.dialog=false;
                 this.Description="";
+                this.fetchData();
             }).catch((error)=>{
                 console.log(error);
                 this.Description="";
@@ -259,9 +275,8 @@ export default{
 
         },
         fetchData(){
-            postService.getPosts().then((res)=>{
+            postService.getPostsUser(this.User['id']).then((res)=>{
                 this.posts=res.data.data;
-                console.log(this.posts);
             })
         },
         deletepost(id){
@@ -288,7 +303,7 @@ export default{
         }
     },
     components:{
-        NavbarComponent,SettingComp
+        NavbarComponent,SettingComp,Accuei
     }
 }
 

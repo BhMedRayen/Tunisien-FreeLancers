@@ -1,6 +1,8 @@
 <template>
     <div>
-                <v-container fluid fill-height>
+      <navbar class="mb-5"></navbar>
+      <div>
+                <v-container fluid fill-height style="margin-top: 8%;">
                     <v-layout align-center justify-center>
                        <v-flex xs12 sm8 md4>
                           <v-card class="elevation-12">
@@ -51,12 +53,14 @@
         </v-btn>
       </template>
     </v-snackbar>
-                 </v-container> 
+                 </v-container>
+                </div> 
     </div>
 </template>
 
 <script>
   import auth from '@/Services/auth';
+  import navbar from '@/components/Home/navbar.vue';
     export default{
         name:"VerifyToken",
         
@@ -83,7 +87,7 @@
           
         },
         components:{
-            
+          navbar
         },
 
     }

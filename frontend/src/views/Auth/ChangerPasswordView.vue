@@ -1,6 +1,9 @@
 <template>
+          <div>
 
-                <v-container fluid fill-height>
+           <navbar></navbar>
+           <div>
+                <v-container fluid fill-height style="margin-top: 10%;">
                     <v-layout align-center justify-center>
                        <v-flex xs12 sm8 md4>
                           <v-card class="elevation-12">
@@ -40,7 +43,7 @@
                                            <v-btn :loading="load" type="submit" class="mt-4 mx-2" style="color:#fff !important" color="#E84C03" >
                                               Changer
                                             </v-btn>
-                                        <v-btn @click="refresh()" type="button" class="mt-4 " color="gray" value="log in">Fermer</v-btn>
+                                            <router-link to="login"><v-btn  type="button" class="mt-4 " color="gray" value="log in">Fermer</v-btn></router-link>
                                     </div>
                               </form>
                              </v-card-text>
@@ -64,13 +67,14 @@
                  </template>
                </v-snackbar>
                  </v-container>
-
+                </div>
+              </div>
 </template>
 
 <script>
 
   import auth from '@/Services/auth';
-
+  import navbar from '@/components/Home/navbar.vue';
     export default{
         name:"changer_password",
       
@@ -106,7 +110,7 @@
           
         },
         components:{
-    
+          navbar
 },
         computed:{
     

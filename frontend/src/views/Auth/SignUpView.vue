@@ -1,6 +1,8 @@
-<template>
+<template >
     <div>     
-        <v-container fluid fill-height>
+      <navbar class="mb-5"></navbar>
+      <div>
+        <v-container fluid fill-height data-aos="fade-right">
                 <v-layout class="mt-5 py-5" align-center justify-center>
                    <v-flex  sm8 md4>
                       <v-card class="elevation-12">
@@ -133,6 +135,7 @@
                    </v-flex>
                 </v-layout>
              </v-container>
+            </div>
              <v-dialog
       v-model="dialog"
       persistent
@@ -312,6 +315,7 @@
 </template>
 
 <script>
+import navbar from "@/components/Home/navbar.vue";
 import Sevice from "../../Services/auth.js"
 export default{
     data(){
@@ -434,6 +438,9 @@ export default{
     },
     computed:{
 
+    },
+    components:{
+      navbar
     }
 }
 </script>
