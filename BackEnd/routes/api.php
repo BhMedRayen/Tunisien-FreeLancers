@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\EmailController;
 use App\Http\Controllers\auth\ForgotPassword;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -44,4 +45,12 @@ Route::group(["prefix"=>"/post"],function(){
     Route::get("/getPosts",[PostController::class,'getPosts']);
     Route::put("/updatepost",[PostController::class,'updatePost']);
     Route::delete("/deletPost/{id}",[PostController::class,'deletepost']);
+    Route::get("/getPostsUser/{id}",[PostController::class,'getPostsUser']);
+    Route::get("/getComments/{id}",[PostController::class,'getComments']);
+    Route::post("/ajouterComment",[PostController::class,'ajouterComment']);
+});
+
+Route::group(["prefix"=>"/notif"],function(){
+    Route::get("/getNotification/{id}",[NotifController::class,'getNotification']);
+    Route::delete("/DeleteNotif/{id}",[NotifController::class,'DeleteNotif']);
 });

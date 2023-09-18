@@ -7,6 +7,7 @@ import ForgotPassword from "../views/Auth/ForgotPasswordView.vue"
 import VerifyToken from "../views/Auth/VerifyTokenView.vue"
 import chnagerPass from "../views/Auth/ChangerPasswordView.vue"
 import profile from "../views/Profile/ProfileView.vue"
+import Accuei from "../views/Profile/AccueilView.vue";
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,6 +20,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: profile
+  },
+  {
+    path: '/Accuei',
+    name: 'Accuei',
+    component: Accuei
   },
   {
     path: '/VerifyToken',

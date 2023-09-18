@@ -1,56 +1,77 @@
 <template>
     <div>
         <v-app-bar
-        color="#E84C03"
-      dense
-      dark
-    >
-
+            color="white"
+       >
       <v-toolbar-title @click="ChangeSettiing()">
-        Tunisienn Freelancers
+         <img src="../../assets/logo/TF.png" width="100px">
       </v-toolbar-title>
-
       <v-spacer></v-spacer>
+      <div class="d-flex ">
+        <v-btn class="mx-4" color="#E84C03" >
+          <v-icon color="white" @click="editPageAccueil(true)">mdi-home</v-icon>
+        </v-btn>
+        <v-btn class="mx-4"  color="#E84C03">
+          <v-icon color="white"  @click="editPageAccueil(false)">mdi-account</v-icon>
+        </v-btn>
+      </div>
+            <v-spacer></v-spacer>
 
-      <v-col
-          cols="12"
-          sm="6"
-          md="3"
-          
-        >
-          <v-text-field
-          class="pt-2"
-            label="Search"
-            append-icon="mdi-magnify"
-            filled
-          ></v-text-field>
-        </v-col>
-
-      <v-menu
-        left
-        bottom
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            v-bind="attrs"
-            v-on="on"
-          >
-           Role <v-icon>mdi-arrow-down-thin</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item
-            v-for="(n,index) in Roles.length"
-            :key="n"
-            @click="() => {ChangerRoleSelected(Roles[index])}"
-          >
-            <v-list-item-title :color="Roles['index']==roleSlelected ? 'red' : '' ">{{ Roles[index] }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-
+      <v-menu offset-y
+               
+               transition="slide-x-transition" 
+               left
+               class="mt-7"
+               max-width="auto"
+               min-width="300"
+               >
+               
+                   <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                    plain
+                    v-bind="attrs"
+                    v-on="on"
+                    >
+                       <v-icon color="red" size="35px ">mdi-bell</v-icon>
+                     <v-badge color="red" :content="notifications.length==0 ? '0' : notifications.length"
+                       ></v-badge>
+                    </v-btn>
+                   </template>
+                      <v-list>
+                           <v-list-item class="text">
+                               Notifications
+                           </v-list-item>
+                       </v-list>
+                       <v-divider></v-divider>
+                   <v-list v-if="notifications==''">
+                   <v-list-item  class="mt-5 red--text">
+                       <v-list-item-title class="text-h7 ml-8 mb-8">No notifications is available</v-list-item-title>
+                   </v-list-item>
+                  </v-list>
+                   <v-list v-else>
+                   <v-list-item
+                      v-for="notif in notifications" :key="notif.id" 
+                   >
+                       <v-list-item-content>
+                           <v-list-item-title class="px-5 justify-center">
+                             {{ notif.message }}  
+                           </v-list-item-title>
+                       </v-list-item-content> 
+                       <v-list-item-action>
+                           <v-col cols="auto">
+                                <v-btn
+                                 color="red"
+                                 plain
+                                   @click="deleteNotificationById(notif.id)"
+                                   >
+                                       <v-icon>mdi-delete</v-icon>
+                                   </v-btn>
+                           </v-col>
+                       </v-list-item-action>
+                   </v-list-item>
+                       <v-divider></v-divider>
+                   </v-list>
+               </v-menu>
     <v-menu class="mx-4"
       :rounded="rounded"
        offset-y
@@ -67,20 +88,7 @@
       </template>
 
       <v-list>
-        <v-list-item @click="logout()"
-        >
-        
-            <v-list-item-content>
-              <v-list-item-title>Logout</v-list-item-title>
-            </v-list-item-content>
-            <v-list-item-action>
-              <v-btn text
-              >
-                <v-icon>mdi-logout</v-icon>
-              </v-btn>
-            </v-list-item-action>
-        
-        </v-list-item>
+       
         <v-list-item @click="ChangeSettiing()"
         >
         
@@ -95,6 +103,20 @@
             </v-list-item-action>
         
         </v-list-item>
+        <v-list-item @click="logout()"
+        >
+        
+            <v-list-item-content>
+              <v-list-item-title>Logout</v-list-item-title>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-btn text
+              >
+                <v-icon>mdi-logout</v-icon>
+              </v-btn>
+            </v-list-item-action>
+        
+        </v-list-item>
       </v-list>
     </v-menu>
  
@@ -103,9 +125,12 @@
 </template>
 
 <script>
+import notiifSerice from "../../Services/Notif.js"
 import {AuthStore} from "../../store/index"
 export default{
-
+  created(){
+    this.getNotifs();
+  },
     mounted(){
         this.User=this.store.getUser;
     },
@@ -120,10 +145,24 @@ export default{
             Roles:["Client","Freelancer"],
             roleSlelected:"",
             search:"",
-            errorSearch:""
+            errorSearch:"",
+            notifications:[]
         }
     },
     methods:{
+      getNotifs(){
+        notiifSerice.getNotif(this.store.User['id']).then((res)=>{
+          this.notifications=res.data.data;
+        })
+      },
+      deleteNotificationById(id){
+        notiifSerice.deleteNotif(id).then((res)=>{
+          this.getNotifs();
+        });
+      },
+      editPageAccueil(val){
+        this.$emit('editPageAccueil',val);
+      },
       logout(){
         this.store.LogOut();
         this.$router.push({name:'login'});
