@@ -24,14 +24,14 @@ export default{
         return Axios.post("auth/register",data,config);
     },
     verify(email){
-        return Axios.post("auth/verify/"+email);
+        return Axios.post("auth/verify/"+email);    
     },
     async Login(email,password){
         const store=AuthStore();
         const res =await Axios.post("auth/login",{email,password});
         if(res.status==200){
             const dataInfo=res.data.data;
-            store.login(dataInfo.token,dataInfo.user,dataInfo.Role=="Client" ? true :false);
+            store.login(dataInfo.token,dataInfo.user,dataInfo.Role=="Client" ? true :false,dataInfo.user['IsClient']==0 ? dataInfo.Skills : null );
         }else{
             store.LogOut();
         }

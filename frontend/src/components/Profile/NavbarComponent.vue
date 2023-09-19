@@ -73,7 +73,6 @@
                    </v-list>
                </v-menu>
     <v-menu class="mx-4"
-      :rounded="rounded"
        offset-y
       :nudge-width="100"
     >
