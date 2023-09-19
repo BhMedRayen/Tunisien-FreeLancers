@@ -6,6 +6,7 @@ use App\Http\Controllers\auth\ForgotPassword;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -53,4 +54,11 @@ Route::group(["prefix"=>"/post"],function(){
 Route::group(["prefix"=>"/notif"],function(){
     Route::get("/getNotification/{id}",[NotifController::class,'getNotification']);
     Route::delete("/DeleteNotif/{id}",[NotifController::class,'DeleteNotif']);
+});
+
+Route::group(["prefix"=>"/skill"],function(){
+    Route::post("/AddSkill",[SkillsController::class,'AddSkill']);
+    Route::delete("/DeleteSkill/{id}",[SkillsController::class,'DeleteSkill']);
+    Route::put("/UpdateService/{id}",[SkillsController::class,'UpdateService']);
+    Route::get("/getSkills/{id}",[SkillsController::class,'getSkill']);
 });
