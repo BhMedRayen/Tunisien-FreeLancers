@@ -368,6 +368,7 @@ export default{
             ).then((res)=>{
                 this.load=false;
                 console.log(res);
+                this.$router.push({name:"login",query:{content:"Register Succefully"}})
             }).catch((error)=>{
                 this.load=false;
             })

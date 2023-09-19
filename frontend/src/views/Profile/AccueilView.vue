@@ -177,7 +177,6 @@ export default{
       },
         fetchData(){
             postService.getPosts().then((res)=>{
-                console.log(res.data.data);
                 this.posts=res.data.data;
             })
         },
