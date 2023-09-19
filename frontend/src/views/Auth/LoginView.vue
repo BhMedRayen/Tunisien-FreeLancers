@@ -9,7 +9,13 @@
                                 <v-toolbar-title >Content de te revoir</v-toolbar-title>
                              </v-toolbar>
                              <v-card-text>
-                             <form @submit.prevent="login()">                        
+                             <form @submit.prevent="login()">   
+                              <v-alert
+                                 v-if="message!=''"
+                                  type="success"
+                                >
+                                  {{ message }}
+                              </v-alert>                   
                                     <v-text-field
                                       name="email"
                                       label="Email"
@@ -75,6 +81,10 @@ export default{
         if((this.$route.query.email)?.length>5){
              this.verifyEmail();
         }
+        if(this.$route.query.content){
+            this.message=this.$route.query.content;
+            setTimeout(()=>{this.message="",3000;this.$router.replace({'query':null});});
+        }
 
         if((this.$route.query.content)?.length>2){
           this.snackbar=true;
@@ -88,7 +98,8 @@ export default{
             password:"",
             load:false,
             text:"",
-            snackbar:false
+            snackbar:false,
+            message:""
             
         }
     },
