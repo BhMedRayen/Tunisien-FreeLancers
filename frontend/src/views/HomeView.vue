@@ -129,6 +129,7 @@
 </template>
 
 <script>
+import preloader from"../components/Preloader.vue"
  import  navbarComp  from "@/components/Home/navbar.vue";
 export default {
  
@@ -152,7 +153,7 @@ export default {
       ]
   }),
   components: {
-    navbarComp
+    navbarComp,preloader
   },
 }
 </script>

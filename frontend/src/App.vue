@@ -1,5 +1,6 @@
 <template>
   <v-app> 
+     <Preloader></Preloader>
       <router-view v-slot="{ Component }">
          <transition name="fade"  mode="out-in">
                  <component :is="Component" />
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+import Preloader from "./components/Preloader.vue";
 import AOS from "aos";
 export default {
   name: 'App',
@@ -19,5 +21,8 @@ export default {
   data: () => ({
     //
   }),
+  components:{
+    Preloader
+  }
 };
 </script>
