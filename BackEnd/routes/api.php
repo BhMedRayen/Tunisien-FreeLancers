@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\EmailController;
 use App\Http\Controllers\auth\ForgotPassword;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\NotifController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SkillsController;
@@ -61,4 +62,10 @@ Route::group(["prefix"=>"/skill"],function(){
     Route::delete("/DeleteSkill/{id}",[SkillsController::class,'DeleteSkill']);
     Route::put("/UpdateService/{id}",[SkillsController::class,'UpdateService']);
     Route::get("/getSkills/{id}",[SkillsController::class,'getSkill']);
+});
+
+Route::group(["prefix"=>"/chat"],function(){
+    Route::get("/GetUser",[ChatController::class,'GetUser']);
+    Route::get("/getMessages/{id}/{user_id}",[ChatController::class,'getMessages']);
+    Route::post("/addMessage",[ChatController::class,'addMessage']);
 });
