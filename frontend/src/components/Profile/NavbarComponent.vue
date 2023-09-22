@@ -16,7 +16,16 @@
         </v-btn>
       </div>
             <v-spacer></v-spacer>
-
+            <v-btn
+                    plain
+                    text @click="ChangeSettiing('chat')">
+                    
+                       <v-icon  color="green" size="35px">mdi-chat</v-icon>
+                     <v-badge color="red" content="5"
+                       ></v-badge>
+                    </v-btn>
+     
+      </v-btn>
       <v-menu offset-y
                
                transition="slide-x-transition" 
@@ -88,7 +97,7 @@
 
       <v-list>
        
-        <v-list-item @click="ChangeSettiing()"
+        <v-list-item @click="ChangeSettiing('setting')"
         >
         
             <v-list-item-content >
@@ -174,8 +183,8 @@ export default{
           this.errorSearch="Chose Role";
         }
       },
-      ChangeSettiing(){
-          this.$emit('ChangeSettiing');
+      ChangeSettiing(val){
+          this.$emit('ChangeSettiing',val);
       }
     }
 }
