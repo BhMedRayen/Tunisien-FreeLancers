@@ -40,7 +40,7 @@ class AuthController extends Controller
         if($request->ClientChoice!="Client"){
             $servicesData = json_decode($request->Services, true);
             if(isset($servicesData) && is_array($servicesData) && count($servicesData)>0){
-                for($i=0;$i<count($servicesData);$i++){
+                for($i=0;$i<=count($servicesData);$i++){
                     $service=new ServiceFreelancer();                
                     $service->Name_Service=$servicesData[$i]["Name"];
                     $service->YearsBusiness=$servicesData[$i]["Years"];

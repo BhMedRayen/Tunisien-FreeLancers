@@ -25,7 +25,7 @@ class LoginController extends Controller
 
              return response()->json(["data"=>$data],200);
         }else{
-            return response()->json(["data"=>"User Not Found"],404);
+            return response()->json(["message"=>"User Not Found"],404);
         }
     }
 }
