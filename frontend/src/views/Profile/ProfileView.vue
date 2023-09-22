@@ -334,11 +334,14 @@
                       </div>
                 </div>
             </div>  
-               <div v-else-if="setting && !showAccueil">
+               <div v-else-if="setting=='setting' && !showAccueil">
                   <SettingComp></SettingComp>
                </div>
-               <div v-else-if="!setting && showAccueil">
+               <div v-else-if="setting=='' && showAccueil">
                   <Accuei></Accuei>
+               </div>
+               <div v-else-if="setting=='chat' && !showAccueil">
+                  <chat></chat>
                </div>
               
             </div>
@@ -351,6 +354,7 @@ import {AuthStore} from "../../store/index"
 import NavbarComponent from "../../components/Profile/NavbarComponent"
 import Accuei from "../../views/Profile/AccueilView.vue"
 import skillService from "../../Services/Skills.js"
+import chat from "@/components/Profile/chat.vue"
 export default{
 
     created(){
@@ -368,7 +372,7 @@ export default{
             snackbar:false,
             isUpdate:false,
             text:"",
-            setting:false,
+            setting:"",
             dialog:false,
             Description:"",
             updateDescription:"",
@@ -460,8 +464,8 @@ export default{
         this.showAccueil=val;
         this.setting=false;
       },
-        ChangeSettiing(){
-           this.setting=!this.setting;
+        ChangeSettiing(val){
+           this.setting=val;
            this.showAccueil=false;
         },
         addPOSt(){
@@ -511,7 +515,7 @@ export default{
         }
     },
     components:{
-        NavbarComponent,SettingComp,Accuei
+        NavbarComponent,SettingComp,Accuei,chat
     }
 }
 
