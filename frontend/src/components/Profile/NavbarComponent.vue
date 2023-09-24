@@ -23,11 +23,8 @@
                        <v-icon  color="green" size="35px">mdi-chat</v-icon>
                      <v-badge color="red" content="5"
                        ></v-badge>
-                    </v-btn>
-
-                    
-                    
-      </v-btn>
+    </v-btn>
+            
       <v-menu offset-y
                
                transition="slide-x-transition" 
