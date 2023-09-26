@@ -24,9 +24,7 @@
                      <v-badge color="red" content="5"
                        ></v-badge>
     </v-btn>
-            
-      <v-menu offset-y
-               
+      <v-menu offset-y   
                transition="slide-x-transition" 
                left
                class="mt-7"
