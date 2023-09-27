@@ -1,50 +1,26 @@
 <template>
         <div class="d-flex p-3 mt-5 m-4 justify-content-center">   
-    <div class="col-xl-10 col-md-8 container">
-          <div class="row shadow-lg rounded">
+           <div class="col-xl-10 col-md-8 container">
+             <div class="row shadow-lg rounded">
                 <div class="col-lg-6">
                         <div class="text-center">
                            <h1 class="h4 fw-bolder mb-3 py-3">Setting</h1>
                         </div>
                     <form @submit.prevent="Setting()" class="py-4"  method="POST"  enctype="multipart/form-data">
-                 
-                   
                        <div class="row mb-4 ">
                           <div class="col-lg-6">
-                            <v-text-field
-          class="pt-2"
-            label="Nom"
-                            v-model="name"
-            filled
-          ></v-text-field>
-                           
+                            <v-text-field class="pt-2" label="Nom" v-model="name" filled></v-text-field>
                           </div>
                           <div class="col-lg-6">
-                            <v-text-field
-          class="pt-2"
-            label="LastName"
-            v-model="lastName"
-            filled
-          ></v-text-field>
+                            <v-text-field class="pt-2" label="LastName" v-model="lastName" filled></v-text-field>
                           </div>
                         </div>
                         <div class="row mb-4">
                           <div class="col-lg-12 mb-3">
-                            <v-text-field
-          class="pt-2"
-            label="Password"
-            v-model="password"  
-            filled
-          ></v-text-field>
+                            <v-text-field class="pt-2" label="Password" v-model="password" filled></v-text-field>
                           </div>
                           <div class="col-lg-12">
-                        
-                            <v-text-field
-          class="pt-2"
-            label="Confirm Password"
-            v-model="confirm"  
-            filled
-          ></v-text-field>
+                            <v-text-field class="pt-2" label="Confirm Password" v-model="confirm" filled></v-text-field>
                     </div>
                       </div>
                         <div class="row">
