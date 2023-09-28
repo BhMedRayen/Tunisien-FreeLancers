@@ -1,6 +1,5 @@
 <template>
           <div>
-
            <navbar></navbar>
            <div>
                 <v-container fluid fill-height style="margin-top: 10%;">
@@ -12,33 +11,9 @@
                              </v-toolbar>
                              <v-card-text>
                              <form  @submit.prevent="changer_password()">
-                                    <v-text-field
-                                      v-model="email"
-                                    
-                                      name="email"
-                                      label="Email"
-                                      type="text"
-                                      placeholder="Entrer Email"
-                                    ></v-text-field>
-                                   
-                                  
-                                    <v-text-field
-                                    v-model="password"
-                                  
-                                    name="password"
-                                    label="Mot de passe"
-                                    type="password"
-                                    placeholder="Entrer Mot de passe"
-                                  ></v-text-field>
-                                 
-                                  <v-text-field
-                                        name="Confirme"
-                                       
-                                        label="Confirme Password"
-                                        type="password"
-                                        v-model="confirme"
-                                        placeholder="Entrer Confirme Mot de passe"
-                                  ></v-text-field>
+                                    <v-text-field v-model="email" name="email" label="Email" type="text" placeholder="Entrer Email"></v-text-field>
+                                    <v-text-field v-model="password" name="password" label="Mot de passe" type="password" placeholder="Entrer Mot de passe"></v-text-field>
+                                    <v-text-field name="Confirme" label="Confirme Password" type="password" v-model="confirme" placeholder="Entrer Confirme Mot de passe"></v-text-field>
                                     <div class="mt-3 text-center">
                                            <v-btn :loading="load" type="submit" class="mt-4 mx-2" style="color:#fff !important" color="#E84C03" >
                                               Changer
@@ -50,18 +25,10 @@
                           </v-card>
                        </v-flex>
                     </v-layout>
-                    <v-snackbar
-                 v-model="snackbar"
-               >
+                 <v-snackbar v-model="snackbar">
                  {{ text }}
-           
                  <template v-slot:action="{ attrs }">
-                   <v-btn
-                     color="green"
-                     text
-                     v-bind="attrs"
-                     @click="snackbar = false"
-                   >
+                   <v-btn color="green" text v-bind="attrs" @click="snackbar = false">
                      Close
                    </v-btn>
                  </template>
@@ -70,15 +37,11 @@
                 </div>
               </div>
 </template>
-
 <script>
-
   import auth from '@/Services/auth';
   import navbar from '@/components/Home/navbar.vue';
     export default{
-        name:"changer_password",
-      
-       
+        name:"changer_password",      
         data(){
             return{
              email:'',
@@ -104,8 +67,7 @@
               }else{
                 this.snackbar=true;
                 this.text="confirme mot de passe doit étre identique que le mot de passe"
-              }
-            
+              }   
             }
           
         },
@@ -117,9 +79,5 @@
         }
     }
 </script>
-
 <style scoped>
-
-
-
 </style>
