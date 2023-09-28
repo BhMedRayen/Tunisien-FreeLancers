@@ -68,8 +68,8 @@
                 this.snackbar=true;
                 this.text="confirme mot de passe doit étre identique que le mot de passe"
               }   
-            }
-          
+            }   
+            
         },
         components:{
           navbar
