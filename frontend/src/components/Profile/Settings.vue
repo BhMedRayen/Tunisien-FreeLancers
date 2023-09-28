@@ -42,26 +42,14 @@
                     <img src="../../assets/App installation-pana.png" width="100%" height="100%"> 
                 </div>
           </div>
-          <v-snackbar
-      v-model="snackbar"
-    >
-      {{ text }}
-
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="pink"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
-    </div>
-    </div>
-</template>
-
+          <v-snackbar v-model="snackbar"> {{ text }}
+            <template v-slot:action="{ attrs }">
+                <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">Close</v-btn>
+            </template>
+           </v-snackbar>
+          </div>
+            </div>
+              </template>
 <script>
 import ServiceUser  from "../../Services/User.js"
 import {AuthStore} from "../../store/index"
