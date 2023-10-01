@@ -18,8 +18,7 @@
                       </v-flex>
                   </v-layout>
               </v-container>
-          </div>
-             
+            </div>       
           <!-- ------------------ /section 1 ------------------------------------>
       </v-container>
 
@@ -33,8 +32,7 @@
                           </v-flex>
                           <v-flex xl6 lg6 md6 sm12 xs12 data-aos="fade-left">
                               <p class="p1">{{ p2}}</p>
-                          </v-flex>
-                          
+                          </v-flex>      
                       </v-layout>
                   </v-container>
           </v-container>
@@ -42,8 +40,6 @@
       <div class="line1">
       </div>
       <!-- ------------------ /section 2 ------------------------------------>
-
-
       <!-- ------------------section 3 ------------------------------------>
       <div class="subject">
           <h3 class="">OUR SERVICES</h3>
