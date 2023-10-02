@@ -2,7 +2,7 @@
           <div>
            <navbar></navbar>
            <div>
-                <v-container fluid fill-height style="margin-top: 10%;">
+              <v-container fluid fill-height style="margin-top: 10%;">
                     <v-layout align-center justify-center>
                        <v-flex xs12 sm8 md4>
                           <v-card class="elevation-12">
