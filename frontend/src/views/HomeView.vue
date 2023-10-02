@@ -21,7 +21,6 @@
             </div>       
           <!-- ------------------ /section 1 ------------------------------------>
       </v-container>
-
       <!-- ------------------section 2 ------------------------------------>
       <div class="sec2">
           <v-container  class=" fluid mt-5 py-5">
@@ -65,8 +64,6 @@
       </div>
       
       <!-- ------------------ /section 3 ------------------------------------>
-
-
       <!-- ------------------ equipe ------------------------------------>
       <div class="subject">
           <h3 class="">Owner</h3>
@@ -74,23 +71,14 @@
       <div class="equipe ">
           <v-container fluid>
               <div class="card2 pa-4 text-center rounded-0">
-                <v-card
-    class="mx-auto"
-    max-width="344"
-  >
-    <v-img
-      src="../assets/rayen (2).jpg"
-      height="200px"
-    ></v-img>
-
-    <v-card-title>
-     Rayen Ben Hassine
-    </v-card-title>
-
-    <v-card-subtitle>
-       DSI32 Iset Bizerte
-    </v-card-subtitle>
-
+                <v-card class="mx-auto" max-width="344">
+                   <v-img src="../assets/rayen (2).jpg" height="200px"></v-img>
+                 <v-card-title>
+                    Rayen Ben Hassine
+                 </v-card-title>
+              <v-card-subtitle>
+                DSI32 Iset Bizerte
+              </v-card-subtitle>
     <v-card-actions class="text-center mx-5">
       <div class="row mx-5">
          <div class="col-lg-3">
@@ -107,14 +95,11 @@
          </div>
       </div>  
       <v-spacer></v-spacer>
-
     </v-card-actions>
-
-    
   </v-card>
-              </div>
-          </v-container>
-      </div>
+ </div>
+ </v-container>
+   </div>
       <div style="bottom: 0;background-color: #000;color: white;text-align: center;">
           CopyRight 2022-2023
       </div>
