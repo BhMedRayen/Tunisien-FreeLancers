@@ -37,24 +37,16 @@
                           </v-card>
                        </v-flex>
                     </v-layout>
-                    <v-snackbar
-      v-model="snackbar"
-    >
-      {{ text }}
-
+                    <v-snackbar v-model="snackbar">
+                                {{ text }}
       <template v-slot:action="{ attrs }">
-        <v-btn
-          color="pink"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
+        <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
           Close
         </v-btn>
       </template>
     </v-snackbar>
-                 </v-container>
-                </div> 
+</v-container>
+</div> 
     </div>
 </template>
 
