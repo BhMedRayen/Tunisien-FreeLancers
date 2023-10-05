@@ -37,20 +37,21 @@ class AuthController extends Controller
             "num_tlf"=>$request->num_tlf
         ]);
        
+       
+
         if($request->ClientChoice!="Client"){
             $servicesData = json_decode($request->Services, true);
             if(isset($servicesData) && is_array($servicesData) && count($servicesData)>0){
-                for($i=0;$i<=count($servicesData);$i++){
-                    $service=new ServiceFreelancer();                
+                for($i=0;$i<count($servicesData);$i++){
+                    $service=new ServiceFreelancer();     
                     $service->Name_Service=$servicesData[$i]["Name"];
                     $service->YearsBusiness=$servicesData[$i]["Years"];
                     $service->TypeService=$servicesData[$i]["Type"];
                     $service->PrincesRange=$servicesData[$i]["price"];
                     $service->user_id=$user->id;
-                    $service->save();
+                    $service->save();  
                 }
             }
-         
         }
 
         Mail::to($request->email)->send(new VerifyEmail($user));

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\chatWebsockets;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -38,13 +39,14 @@ class ChatController extends Controller
         $message->user_recu=$request->id;
         $message->text=$request->text;
         $message->save();
+        broadcast(new chatWebsockets());
         return response()->json(['data'=>$message],201);
     }
 
     
    public function getMessages(int $id,int $user_id){
        $messages=Message::where("user_send",$user_id)->where("user_recu",$id)->
-        OrWhere("user_send",$id)->where("user_recu",$user_id)->get();
+        OrWhere("user_send",$id)->where("user_recu",$user_id)->orderBy('created_at')->get();
     return response()->json(["data"=>$messages],200);
    }
 }
