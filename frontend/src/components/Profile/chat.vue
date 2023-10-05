@@ -83,9 +83,7 @@
                                        <p>
                                            {{ chat.text }}
                                        </p>
-                                       <div class="check">
-                                               <span>155</span>       
-                                       </div>
+                                      
                                    </div>
                                </div>
                                <div class="chat-re" v-else>
@@ -94,9 +92,7 @@
                                        <p>
                                            {{ chat.text }}
                                        </p>
-                                       <div class="check">
-                                             155
-                                       </div>
+                                      
                                    </div>
                                </div>
                            </div>  
@@ -145,6 +141,11 @@ export default{
             chats:[],
             message:""
         }
+    },
+    mounted(){
+        window.Echo.channel('public').listen('chatWebsockets',(e)=>{
+            this.choiceUser(this.userContact);
+        })
     },
     created(){
         this.fetchData();

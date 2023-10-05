@@ -9,6 +9,21 @@ Vue.config.productionTip = false
 import {PiniaVuePlugin,createPinia} from "pinia"
 Vue.use(PiniaVuePlugin);
 export const pinia=createPinia();
+
+
+import Echo from "laravel-echo"
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.VUE_APP_WEBSOCKETS_KEY,
+    wsHost:process.env.VUE_APP_WEBSOCKETS_SERVER,
+    wsPort: 6001,
+    cluster: "mt1",
+    forceTLS: false,
+    disableStats: true,
+});
+
 new Vue({
   router,
   store,
