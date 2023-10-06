@@ -6,7 +6,7 @@
                        <v-flex xs12 sm8 md4>
                           <v-card class="elevation-12">
                              <v-toolbar dark color="#E84C03">
-                                <v-toolbar-title >Content de te revoir</v-toolbar-title>
+                                <v-toolbar-title >Happy to see you again</v-toolbar-title>
                              </v-toolbar>
                              <v-card-text>
                              <form @submit.prevent="login()">   
@@ -26,7 +26,7 @@
                                     <v-text-field
                                       :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                                       name="password"
-                                      label="Mot de passe"
+                                      label="Password"
                                       :type="show ? 'text' : 'password'"
                                       v-model="password"
                                       @click:append="show = !show"
@@ -34,12 +34,12 @@
                                    ></v-text-field>
                                     <div class="mt-3 text-center">
                                         <v-btn type="submit" class="mt-4 mx-2" style="color:#fff !important" color="#E84C03" value="log in" :loading="load">Connexion</v-btn>
-                                        <router-link to="/" class="text-decoration-none  mx-2"> <v-btn type="button" class="mt-4 " color="gray" value="close">Fermer</v-btn></router-link>
+                                        <router-link to="/" class="text-decoration-none  mx-2"> <v-btn type="button" class="mt-4 " color="gray" value="close">Close</v-btn></router-link>
                                         <div class="text-center mt-3">
-                                          Vous êtes nouveau ici ?<router-link to="signup" class="text-decoration-none  mx-2">  <span>S'incrire</span></router-link>
+                                          Are you new here?<router-link to="signup" class="text-decoration-none  mx-2">  <span>Sign up</span></router-link>
                                         </div>
                                         <div class="text-center mt-3">
-                                          <router-link to="ForgotPassword" class="text-decoration-none  mx-2">Mot de passe oublié ?</router-link>
+                                          <router-link to="ForgotPassword" class="text-decoration-none  mx-2">Forgot password ?</router-link>
                                         </div>
                                     </div>
                               </form>
