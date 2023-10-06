@@ -68,4 +68,20 @@ const router = new VueRouter({
   routes
 })
 
+//navigation-guards
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = localStorage.getItem("token") !== null;
+
+  if (!isAuthenticated) {
+    if (to.name !== 'login' && to.name !== 'signup' && to.name !=="home") {
+      next({ name: 'login' });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
 export default router
