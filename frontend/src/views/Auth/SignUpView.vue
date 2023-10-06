@@ -9,7 +9,7 @@
                          <v-toolbar dark color="#E84C03">
                             <v-toolbar-title >
                                <div class="d-flex justify-content-center mt-5">
-                                   <p>S'incrire</p>
+                                   <p>Sign Up</p>
                                </div>
                             </v-toolbar-title>
                          </v-toolbar>
@@ -19,7 +19,7 @@
                                  <div class="col-md-6">
                                   <v-text-field
                                   name="Name"
-                                  label="Nom"
+                                  label="Name"
                                   v-model="nom"        
                                   type="text"
                                   placeholder="Tapez Nom"
@@ -29,7 +29,7 @@
                                   <v-text-field
                                   name="LastName"
                                     v-model="prenom"
-                                  label="Prenom"       
+                                  label="prenom"       
                                   type="text"
                                   placeholder="Tapez Prenom"
                                 ></v-text-field>
@@ -48,11 +48,11 @@
                              </div>
                              <v-radio-group v-model="sex">
       <v-radio
-        label="Homme"
+        label="man"
         value="man"
       ></v-radio>
       <v-radio
-        label="Femme"
+        label="woman"
         value="woman"
       ></v-radio>
     </v-radio-group>
@@ -64,7 +64,7 @@
                                   :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                                   :type="show ? 'text' : 'password'"
                                   @click:append="show = !show"              
-                                  label="Mot de passe"               
+                                  label="Password"               
                                   placeholder="Mot de passe"
                                ></v-text-field>
                               </div>
@@ -80,7 +80,7 @@
                             <div class="col-md-12">
                              <v-text-field
                              name="N° Phone"
-                             label="N° Télephone"
+                             label="N° Phone"
                             v-model="tlf"
                            
                              type="text"
@@ -90,7 +90,7 @@
                             <div class="col-md-12">
                              <v-text-field
                              name="Cin"
-                             label="Cin"
+                             label="  CIN"
                              v-model="cin"
                              type="text"
                              placeholder="Cin"
@@ -110,9 +110,10 @@
                         <v-checkbox>
                           <template v-slot:label>
                             <div>
-                           je suis d'accord avec le
-                              <span style="color:blue"> Termes et conditions </span>  
-                                est génial
+                          
+                              I agree to the general
+                              <span style="color:blue"> terms and conditions </span>  
+                              
                             </div>
                             <div>
                              
@@ -123,11 +124,11 @@
                         <div>
                         </div>
                                 <div class="mt-3 text-center ">
-                                    <v-btn :loading="load" type="submit" class="mt-4 " style="color:#fff !important" color="#E84C03" value="Sign Up">S'incrire</v-btn>
-                                    <router-link to="/" class="text-decoration-none  mx-2"> <v-btn type="button" class="mt-4 " color="gray" value="close">Fermer</v-btn></router-link>
+                                    <v-btn :loading="load" type="submit" class="mt-4 " style="color:#fff !important" color="#E84C03" value="Sign Up">Sign Up</v-btn>
+                                    <router-link to="/" class="text-decoration-none  mx-2"> <v-btn type="button" class="mt-4 " color="gray" value="close">Close</v-btn></router-link>
                                 </div>
                                 <div class="text-center mt-3">
-                                  Vous avez déjà un compte ?<router-link to="login" class="text-decoration-none  mx-2">  <span>Connexion</span></router-link>
+                                  Do you already have an account?<router-link to="login" class="text-decoration-none  mx-2">  <span>Connexion</span></router-link>
                                 </div>
                           </form>
                          </v-card-text>
@@ -258,7 +259,7 @@
               </v-col>
             </v-row>
           </v-container>
-          <small>*indicates required field</small>
+          <!-- <small>*indicates required field</small> -->
         </v-card-text>
         <v-card-actions v-if="showUpdate==false">
           <v-spacer></v-spacer>
