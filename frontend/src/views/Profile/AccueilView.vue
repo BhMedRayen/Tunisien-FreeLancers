@@ -40,7 +40,7 @@
         color="yellow"
         @click="EnableAjout(item.id)"
       >
-        Ajouter
+        ADD COMMENT
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -74,7 +74,7 @@
          Close
        </v-btn>
        <v-btn color="primary"  @click="AjouterComment()">
-         Ajouter
+         ADD
        </v-btn>
     </v-card-actions>
     </v-card>

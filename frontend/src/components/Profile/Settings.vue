@@ -9,7 +9,7 @@
                     <form @submit.prevent="Setting()" class="py-4"  method="POST"  enctype="multipart/form-data">
                        <div class="row mb-4 ">
                           <div class="col-lg-6">
-                            <v-text-field class="pt-2" label="Nom" v-model="name" filled></v-text-field>
+                            <v-text-field class="pt-2" label="Name" v-model="name" filled></v-text-field>
                           </div>
                           <div class="col-lg-6">
                             <v-text-field class="pt-2" label="LastName" v-model="lastName" filled></v-text-field>
