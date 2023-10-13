@@ -165,7 +165,7 @@
                       </div>
                     </div>
                     <div class="col-lg-4">
-                        <v-btn plain color="#E84C03" @click="ChangeSettiing()">
+                        <v-btn plain color="#E84C03" @click="ChangeSettiing('setting')">
                           Edit Profil
                         </v-btn>
                     </div>

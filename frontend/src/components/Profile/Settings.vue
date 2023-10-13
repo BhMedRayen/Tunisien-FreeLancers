@@ -6,7 +6,7 @@
                         <div class="text-center">
                            <h1 class="h4 fw-bolder mb-3 py-3">Setting</h1>
                         </div>
-                    <form @submit.prevent="Setting()" class="py-4"  method="POST"  enctype="multipart/form-data">
+                  <form @submit.prevent="Setting()" class="py-4"  method="POST"  enctype="multipart/form-data">
                        <div class="row mb-4 ">
                           <div class="col-lg-6">
                             <v-text-field class="pt-2" label="Name" v-model="name" filled></v-text-field>
