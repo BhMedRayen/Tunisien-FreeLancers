@@ -1,0 +1,121 @@
+
+composer require beyondcode/laravel-websockets : install Laravel-websockets package
+
+php artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" --tag="migrations"  :The package comes with migration to save statistical information about the running WebSockets server.
+
+php artisan migrate
+
+php artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" --tag="config" : publish the WebSocket configuration file
+
+uncomment app\providers\broadcastServiceProvide::class in app.php
+
+composer require pusher/pusher-php-server ^VERSION --ignore-platform-reqs || composer require pusher/pusher-php-server "~3.0"
+
+
+.env 
+
+BROADCAST_DRIVER=pusher
+
+PUSHER_APP_ID=local
+PUSHER_APP_KEY=local
+PUSHER_APP_SECRET=local
+PUSHER_APP_CLUSTER=mt1
+
+
+in config/broadcasting.php
+
+ 'pusher' => [
+            'driver' => 'pusher',
+            'key' => env('PUSHER_APP_KEY'),
+            'secret' => env('PUSHER_APP_SECRET'),
+            'app_id' => env('PUSHER_APP_ID'),
+            'options' => [
+                'cluster' => env('PUSHER_APP_CLUSTER'),
+                'encrypted' => true,
+                'host' => '127.0.0.1',
+                'port' => 6001,
+                'scheme' => 'http',
+                // 'curl_options' => [
+                //     CURLOPT_SSL_VERIFYHOST => 0,
+                //     CURLOPT_SSL_VERIFYPEER => 0,
+                // ],
+                // 'useTLS' => true,
+            ],
+
+
+php artisan websockets:serve
+
+http://127.0.0.1:8000/laravel-websockets
+
+/ *** ***/
+php artisan make:event notif
+
+class notif implments ShouldBroadcastNow
+{
+
+  private $notif;
+ public function __construct($notif){
+	 $this->notif=$notif;
+ }
+
+
+ public function broadcastWith(){
+  return['message'=>$this->notif];
+ }
+
+  public function broadcaston(){
+	return new channel('public');
+  }
+}
+/ ******/
+
+
+ /* *** test in web in dashboad websockets*//
+use App\Events\notif;
+
+Route::get('/broadcast',function(){
+
+    broadcast(new notif());//notif::dispatch();
+    return "Event has been sent!";
+});
+
+
+
+in controller 
+
+  broadcast(new notif($notification->message));
+
+in Vue js :
+
+
+npm i laravel-echo
+npm i pusher-js
+
+.env
+
+VUE_APP_WEBSOCKETS_KEY=local
+VUE_APP_WEBSOCKETS_SERVER=127.0.0.1
+
+in main.js
+
+import Echo from "laravel-echo"
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.VUE_APP_WEBSOCKETS_KEY,
+    wsHost:process.env.VUE_APP_WEBSOCKETS_SERVER,
+    wsPort: 6001,
+    cluster: "mt1",
+    forceTLS: false,
+    disableStats: true,
+});
+
+how test run websockest in vuejs:
+
+ window.Echo.channel('public').listen('notif',(e)=>{
+    	    this.getnotif();
+            this.getNotifNotyet();
+ })
+
+
