@@ -7,11 +7,11 @@
 <script>
 export default{
     mounted(){
-        setTimeout(()=>this.load=false,0);
+        setTimeout(()=>this.load=false,2000);
     },
     data(){
         return{
-            load:false
+            load:true
         }
     }
 }

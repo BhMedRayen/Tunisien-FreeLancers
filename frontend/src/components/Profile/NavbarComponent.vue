@@ -16,7 +16,7 @@
             <v-spacer></v-spacer>
               <v-btn plain text @click="ChangeSettiing('chat')"> 
                        <v-icon  color="green" size="35px">mdi-chat</v-icon>
-                       <v-badge color="red" content="5"></v-badge>
+                       <!-- <v-badge color="red" content=""></v-badge> -->
               </v-btn>
       <v-menu offset-y transition="slide-x-transition" left class="mt-7" max-width="auto" min-width="300">    
                    <template v-slot:activator="{ on, attrs }">
