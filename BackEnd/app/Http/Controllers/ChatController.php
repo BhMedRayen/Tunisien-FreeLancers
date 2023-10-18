@@ -43,7 +43,7 @@ class ChatController extends Controller
         return response()->json(['data'=>$message],201);
     }
 
-    
+    // function get message 
    public function getMessages(int $id,int $user_id){
        $messages=Message::where("user_send",$user_id)->where("user_recu",$id)->
         OrWhere("user_send",$id)->where("user_recu",$user_id)->orderBy('created_at')->get();
